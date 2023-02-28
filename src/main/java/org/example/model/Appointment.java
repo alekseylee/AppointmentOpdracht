@@ -1,13 +1,20 @@
 package org.example.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Appointments")
 public class Appointment {
     @Id
+    @Column(name = "day_month_year__hour+minute")
     private String id;
+
+    @Column(name = "title")
     private String title;
+    @Column(name = "description")
     private String description;
     private int day;
     private int month;

@@ -12,8 +12,8 @@ public class AppointmentRepository {
         em.getTransaction().commit();
     }
 
-    public Optional<Appointment> readAppointment(EntityManager em, String name) {
-        Appointment appointment = em.find(Appointment.class, name);
+    public Optional<Appointment> readAppointment(EntityManager em, String id) {
+        Appointment appointment = em.find(Appointment.class, id);
         return Optional.ofNullable(appointment);
     }
 
@@ -24,9 +24,9 @@ public class AppointmentRepository {
     }
 
 
-    public void deleteAppointment(EntityManager em, String name) {
+    public void deleteAppointment(EntityManager em, String id) {
         em.getTransaction().begin();
-        Appointment appointment = em.find(Appointment.class, name);
+        Appointment appointment = em.find(Appointment.class, id);
         em.remove(appointment);
         em.getTransaction().commit();
     }
