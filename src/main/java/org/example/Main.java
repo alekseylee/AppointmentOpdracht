@@ -50,6 +50,7 @@ public class Main {
         SimpleDateFormat sdf = new SimpleDateFormat("dd_MM_yyyy__HH_mm");
         Date utildate = sdf.parse("28_2_2023__10_1");
         System.out.println(utildate);
+
     }
 
     private static java.sql.Date convertDate(java.util.Date date) {
