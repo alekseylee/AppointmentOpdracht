@@ -17,6 +17,11 @@ public class AppointmentRepository {
         return Optional.ofNullable(appointment);
     }
 
+    public void deleteAppointment(EntityManager em, Appointment appointment) {
+        em.getTransaction().begin();
+        em.remove(appointment);
+        em.getTransaction().commit();
+    }
     public void updateAppointment(EntityManager em, Appointment appointment) {
         em.getTransaction().begin();
         em.merge(appointment);
@@ -24,12 +29,7 @@ public class AppointmentRepository {
     }
 
 
-    public void deleteAppointment(EntityManager em, String id) {
-        em.getTransaction().begin();
-        Appointment appointment = em.find(Appointment.class, id);
-        em.remove(appointment);
-        em.getTransaction().commit();
-    }
+
 
 
 

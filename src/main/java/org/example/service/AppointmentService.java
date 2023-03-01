@@ -23,10 +23,13 @@ public class AppointmentService {
         return optionalAppointment;
     }
 
-    public void deleteAppointment(String id){
+    public void deleteAppointment(String id) {
         EntityManager em = EntityManagerProvider.getEntityManager();
+        Optional<Appointment> appointment = appointmentRepository.readAppointment(em, id);
 
-        appointmentRepository.deleteAppointment(em, id);
+        if (appointment.isPresent()) {
+            appointmentRepository.deleteAppointment(em, appointment.get());
+        }
         em.close();
     }
 
@@ -35,6 +38,4 @@ public class AppointmentService {
         appointmentRepository.updateAppointment(em, appointment);
         em.close();
     }
-
-
 }

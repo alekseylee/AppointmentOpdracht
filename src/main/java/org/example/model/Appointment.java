@@ -6,10 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Appointments")
+@Table(name = "Appointment")
 public class Appointment {
     @Id
-    @Column(name = "day_month_year__hour+minute")
+    @Column(name = "id")
     private String id;
 
     @Column(name = "title")
@@ -25,8 +25,8 @@ public class Appointment {
     protected Appointment() {
     }
 
-    public Appointment(String id, String title, String description, int day, int month, int year, int hour, int minute) {
-        this.id = id;
+    public Appointment(String title, String description, int day, int month, int year, int hour, int minute) {
+        this.id = day + "_" + month + "_" + year + "__" + hour + "_" + minute;
         this.title = title;
         this.description = description;
         this.day = day;
