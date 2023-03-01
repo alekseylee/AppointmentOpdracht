@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        Appointment client1 = new Appointment("Sheldon", "GP", "Head pain", 28, 02, 2023, 13, 25);
-        Appointment client2 = new Appointment("Rajesh", "Hand Surgery", "Break hand", 28, 02, 2023, 10, 01);
-        Appointment client3 = new Appointment("Penny", "Dentist", "Veneers Procedure", 01, 03, 2023, 9, 44);
-        Appointment client4 = new Appointment("Leonard", "Ophthalmologist", "Vision test", 05, 01, 2023, 8, 25);
+        Appointment client1 = new Appointment( "GP", "Head pain", 28, 02, 2023, 13, 25);
+        Appointment client2 = new Appointment( "Hand Surgery", "Break hand", 28, 02, 2023, 10, 01);
+        Appointment client3 = new Appointment( "Dentist", "Veneers Procedure", 01, 03, 2023, 9, 44);
+        Appointment client4 = new Appointment( "Ophthalmologist", "Vision test", 05, 01, 2023, 8, 25);
 
         AppointmentService as = new AppointmentService();
 
@@ -21,22 +21,22 @@ public class Main {
         as.createAppointment(client4);
 
         // Read appointments
-        Optional<Appointment> dbAppointment = as.readAppointment("Ann");
+        Optional<Appointment> dbAppointment = as.readAppointment("1_3_2023__9_44");
         if (dbAppointment.isPresent()) {
             System.out.println(dbAppointment.get());
         } else {
             System.out.println("No Appointment found!");
         }
 
-        // Delete appointments
-        as.deleteAppointment("Ann");
+//         Delete appointments
+        as.deleteAppointment("1_3_2023__9_44");
 
-        // Update appointments
-        Optional<Appointment> appointmentToUpdate = as.readAppointment("Tommy");
+//
+//        // Update appointments
+        Optional<Appointment> appointmentToUpdate = as.readAppointment("28_2_2023__10_1");
         if (appointmentToUpdate.isPresent()) {
             Appointment foundAppointment = appointmentToUpdate.get();
             foundAppointment.setHour(foundAppointment.getHour()+1);
-
             as.updateAppointment(foundAppointment);
         }
 
